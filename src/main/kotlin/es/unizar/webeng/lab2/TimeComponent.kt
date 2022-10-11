@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 data class TimeDTO(val time: LocalDateTime)
 
 interface TimeProvider {
-  fun now(): LocalDateTime
+    fun now(): LocalDateTime
 }
 
 @Service
@@ -18,7 +18,7 @@ class TimeService : TimeProvider {
 
 fun LocalDateTime.toDTO() = TimeDTO(time = this)
 
-@RestController 
+@RestController
 class TimeController(val service: TimeProvider) {
     @GetMapping("/time")
     fun time() = service.now().toDTO()
